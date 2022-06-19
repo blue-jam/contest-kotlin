@@ -1,0 +1,10 @@
+[codestyle]
+indent_type='space'
+indent_width=4
+template_file='~/Contest/contest-kotlin/config/atcoder-tools/template.kt'
+code_generator_toml='~/Contest/contest-kotlin/config/atcoder-tools/kotlin.toml'
+workspace_dir='~/Contest/contest-kotlin/contest'
+[postprocess]
+exec_on_each_problem_dir='bash ~/Contest/contest-kotlin/script/setup_problem_dir.bash'
+[tester]
+compile_before_testing=true

@@ -1,0 +1,1 @@
+class TestExampleA: TestExecutor(::run)

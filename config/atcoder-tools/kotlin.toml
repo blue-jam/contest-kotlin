@@ -1,0 +1,86 @@
+base_indent = 1
+insert_space_around_operators = true
+
+# global変数宣言時の接頭辞
+global_prefix = ""
+
+# インデックス
+[index]
+i = "i"
+j = "j"
+
+# ループ
+[loop]
+header = "for ({loop_var} in 0 until {length}) {{"
+footer = "}}"
+
+# タイプ
+[type]
+int = "Long"
+float = "Double"
+str = "String"
+
+# デフォルト値
+[default]
+int = "0L"
+float = "0.0"
+str = '""'
+
+# 宣言
+[declare]
+int = "var {name}: Long"
+float = "var {name}: Double"
+str = "var {name}: String"
+seq = "var {name}: Array<{type}>"
+2d_seq = "var {name}: Array<Array{type}>>"
+
+# 確保
+[allocate]
+seq = "{name} = Array({length}) {{ {default} }}"
+2d_seq = "{name} = Array({length_i} {{ Array({length_j}.toInt()) {{ {default} }} }}"
+
+# 宣言と確保
+[declare_and_allocate]
+seq = "val {name} = Array({length}.toInt()) {{ {default} }}"
+self.declare_and_allocate_2d_seq = "val {name} = Array({length_i}.toInt()) {{ Array({length_j}.toInt()) {{ {default} }} }}"
+
+# 入力関数
+[input_func]
+int = "scanner.nextLong()"
+float = "scanner.nextDouble()"
+str = "scanner.next()"
+
+# 入力
+[input]
+int = "{name} = {input_func}"
+float = "{name} = {input_func}"
+str = "{name} = {input_func}"
+
+# 宣言と入力
+[declare_and_input]
+int = "val {name} = {input_func}"
+float = "val {name} = {input_func}"
+str = "val {name} = {input_func}"
+
+# 確保と入力
+[allocate_and_input]
+seq = "{name} = Array({length}.toInt()) {{ {input_func} }}"
+2d_seq = "{name} = Array({length_i}.toInt()) {{ Array({length_j}.toInt()) {{ {input_func} }} }}"
+
+# 宣言と確保と入力
+[declare_and_allocate_and_input]
+seq = "val {name} = Array({length}.toInt()) {{ {input_func} }}"
+2d_seq = "val {name} = Array({length_i}.toInt()) {{ Array({length_j}.toInt()) {{ {input_func} }} }}"
+
+# 引数
+[arg]
+int = "{name}: Long"
+float = "{name}: Double"
+str = "{name}: String"
+seq = "{name}: Array<{type}>"
+2d_seq = "{name}: Array<Array<{type}>>"
+
+# 配列アクセス
+[access]
+seq = "{name}[{index}.toInt()]"
+2d_seq = "{name}[{index_i}.toInt()][{index_j}.toInt()]"
