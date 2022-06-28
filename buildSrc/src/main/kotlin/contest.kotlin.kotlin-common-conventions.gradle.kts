@@ -28,10 +28,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
 
-tasks.withType<KotlinCompile> {
-    version = "1.3.71"
-}
-
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
