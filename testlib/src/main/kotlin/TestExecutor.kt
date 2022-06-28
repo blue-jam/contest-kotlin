@@ -16,20 +16,20 @@ abstract class TestExecutor(
         const val INPUT_NAME_PREFIX = "in"
         const val INPUT_NAME_PATTERN = "in_%s.txt"
         const val OUTPUT_NAME_PATTERN = "out_%s.txt"
-        val NUMBER_PATTERN = Pattern.compile("\\d+")!!
+        val ID_PATTERN = Pattern.compile("_([^._]+)")!!
     }
 
     @TestFactory
     fun execute(): List<DynamicTest> {
         val resourceDirectory = File(run.javaClass.getResource(DIRECTORY)!!.toURI())
-        val numbers = resourceDirectory.listFiles { file -> file.name.startsWith(INPUT_NAME_PREFIX) }!!
+        val ids = resourceDirectory.listFiles { file -> file.name.startsWith(INPUT_NAME_PREFIX) }!!
             .map {
-                val matcher = NUMBER_PATTERN.matcher(it.name)
+                val matcher = ID_PATTERN.matcher(it.name)
                 matcher.find()
-                matcher.group()
+                matcher.group(1)
             }
 
-        return numbers.map { id ->
+        return ids.map { id ->
             val name = INPUT_NAME_PATTERN.format(id)
             val input = getStreamOfFile(name)
             val expected = String(getStreamOfFile(OUTPUT_NAME_PATTERN.format(id)).readAllBytes())
